@@ -8,9 +8,10 @@ class Config:
             data = json.loads(f.read())
             try:
                 self.discord_token = data["discord_token"]
-                self.discord_guild_id = data["discord_guild_id"]
-                self.telegram_chat_id_list = data["telegram_chat_id_list"]
-                self.telegram_token = data["telegram_token"]
+                self.discord_guild_id_list = data["discord_guild_id_list"]
                 self.notify_telegram = data["notify_telegram"]
+                if self.notify_telegram:
+                    self.telegram_chat_id_list = data["telegram_chat_id_list"]
+                    self.telegram_token = data["telegram_token"]
             except KeyError:
                 sys.exit("Error reading config file")

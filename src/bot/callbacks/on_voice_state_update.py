@@ -6,7 +6,7 @@ from src.bot.callback_generator import CallbackGenerator
 
 class OnVoiceStateUpdate(CallbackGenerator):
     async def on_voice_state_update(self: DiscordBotClient, member, before, after):
-        if str(member.guild.id) == self.config.discord_guild_id:
+        if str(member.guild.id) in self.config.discord_guild_id_list:
             member_name = str(member)
             guild_name = str(member.guild)
 
