@@ -2,6 +2,7 @@ from datetime import datetime
 from contextlib import contextmanager
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import OperationalError
 
 from src.db.models.activity_log import ActivityLogModel
 from src.db.declarative_base import Base
@@ -9,7 +10,12 @@ from src.db.declarative_base import Base
 
 class ActivityLogClient:
     def __init__(self):
-        engine = create_engine("sqlite:///activity_log.db")
+        try:
+            # Path for docker
+            engine = create_engine(r"sqlite:///SharedVolume:/activity_log.db")
+        except OperationalError:
+            # Path for regular run
+            engine = create_engine("sqlite:///C\activity_log.db")
         Base.metadata.create_all(engine)
         Session = sessionmaker()
         Session.configure(bind=engine)
