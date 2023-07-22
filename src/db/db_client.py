@@ -12,7 +12,7 @@ class ActivityLogClient:
     def __init__(self):
         try:
             # Path for docker
-            engine = create_engine("sqlite:///sharedvolume/activity_log.db")
+            engine = create_engine("sqlite:////sharedvolume/activity_log.db")
         except OperationalError:
             # Path for regular run
             engine = create_engine("sqlite:///activity_log.db")
