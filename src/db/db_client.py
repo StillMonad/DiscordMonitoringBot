@@ -15,7 +15,7 @@ class ActivityLogClient:
             engine = create_engine(r"sqlite:///SharedVolume:/activity_log.db")
         except OperationalError:
             # Path for regular run
-            engine = create_engine("sqlite:///C\activity_log.db")
+            engine = create_engine("sqlite:///activity_log.db")
         Base.metadata.create_all(engine)
         Session = sessionmaker()
         Session.configure(bind=engine)
