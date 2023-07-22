@@ -1,9 +1,31 @@
 # DiscordMonitoringBot
-
+## General info
 BOT for logging discord voice chat activity and sending notifications for selected servers via telegram to selected chats
 
-You just need to add your own config.json file to the root:
+## Requirements
+* python3 
+* pip
 
+## Setup
+### Step 1:
+
+Unix:
+```
+$ python3 -m venv env
+$ source env/bin/activate
+$ pip install -r requirements.txt
+```
+Windows:
+```
+$ python3 -m venv env
+$ .\env\Scripts\activate
+$ pip install -r requirements.txt
+```
+
+### Step 2:
+
+Add your own "config.json" file to the project root:
+```
 Example 1:
 ############ config.json: ############
 {
@@ -19,6 +41,7 @@ Example 2:
 {
     "discord_token": "<your discord bot token>",
     "discord_guild_id_list": ["<your discord guild id 1>", "<your discord guild id 2>"],
-    "notify_telegram": false
+    "notify_telegram": false   
 }
 ######################################
+```
