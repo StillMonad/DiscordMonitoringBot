@@ -35,13 +35,11 @@ class TelegramClient:
         while self.__is_polling:
             time_now = time.time()
             time_diff = time_now - time_prev
-            for i in range(len(self.sent_messages)):
-                m = self.sent_messages[i]
+            for m in self.sent_messages[:]:
                 m.time_to_live -= time_diff
                 if m.time_to_live <= 0:
                     self.delete_message(m.chat_id, m.message_id)
-                    self.sent_messages.pop(i)
-                    i -= 1
+                    self.sent_messages.remove(m)
             time_prev = time_now
             time.sleep(self.__polling_cycle)
 
