@@ -13,5 +13,6 @@ class Config:
                 if self.notify_telegram:
                     self.telegram_chat_id_list = data["telegram_chat_id_list"]
                     self.telegram_token = data["telegram_token"]
+                    self.messages_time_to_live = data["messages_time_to_live"]
             except KeyError:
                 sys.exit("Error reading config file")

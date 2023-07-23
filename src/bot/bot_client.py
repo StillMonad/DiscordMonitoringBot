@@ -1,7 +1,7 @@
 import discord
 
 from src.db.db_client import ActivityLogClient
-from src.bot.telegram_api_client import TelegramApi
+from src.bot.telegram_api_client import TelegramClient
 from src.bot.callback_generator import CallbackGenerator
 
 
@@ -15,5 +15,8 @@ class DiscordBotClient(discord.Client):
 
         self.config = config
         if self.config.notify_telegram is True:
-            self.telegram_api_client = TelegramApi(config)
+            self.telegram_api_client = TelegramClient(config)
         self.db = ActivityLogClient()
+
+        if config.messages_time_to_live > 0:
+            self.telegram_api_client.start_polling_daemon()

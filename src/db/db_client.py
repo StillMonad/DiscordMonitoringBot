@@ -13,10 +13,13 @@ class ActivityLogClient:
         try:
             # Path for docker
             engine = create_engine("sqlite:////sharedvolume/activity_log.db")
+            Base.metadata.create_all(engine)
+
         except OperationalError:
             # Path for regular run
             engine = create_engine("sqlite:///activity_log.db")
-        Base.metadata.create_all(engine)
+            Base.metadata.create_all(engine)
+
         Session = sessionmaker()
         Session.configure(bind=engine)
         self.session: Session = Session()
