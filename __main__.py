@@ -1,6 +1,6 @@
 from discord.errors import LoginFailure
 from loguru import logger
-from src.db.db_client import ActivityLogClient
+from src.db.activity_log_client import ActivityLogClient
 from src.utils.config import Config
 from src.bot.bot_client import DiscordBotClient
 

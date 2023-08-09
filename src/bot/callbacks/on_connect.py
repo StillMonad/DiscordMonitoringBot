@@ -1,8 +1,8 @@
 from loguru import logger
 
-from src.bot.bot_client import DiscordBotClient
-from src.bot.callback_generator import CallbackGenerator
+from src.bot.base_bot_client import BaseDiscordBotClient
 
-class OnConnect(CallbackGenerator):
-    async def on_connect(self: DiscordBotClient,):
+
+class OnConnect:
+    async def on_connect(self: BaseDiscordBotClient):
         logger.info("Bot connected")

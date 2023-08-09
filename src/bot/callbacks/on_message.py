@@ -1,11 +1,10 @@
 from loguru import logger
+from src.bot.tools.action import Action
+from src.bot.base_bot_client import BaseDiscordBotClient
 
-from src.bot.action import Action
-from src.bot.callback_generator import CallbackGenerator
-from src.bot.bot_client import DiscordBotClient
 
-class OnMessage(CallbackGenerator):
-    async def on_message(self: DiscordBotClient, message):
+class OnMessage:
+    async def on_message(self: BaseDiscordBotClient, message):
         if message.author == self.user:
             return
         action = Action(
