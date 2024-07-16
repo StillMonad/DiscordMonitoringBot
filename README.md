@@ -35,7 +35,7 @@ Example 1:
     "discord_guild_id_list": ["<your discord guild id 1>", "<your discord guild id 2>"],
     "notify_telegram": true
     "telegram_token": "<your telegram bot token>",
-    "telegram_chat_id_list": ["<your telegtam chat id 1>", "<your telegtam chat id 2>"],
+    "telegram_chat_id_list": ["<your telegram chat id 1>", "<your telegram chat id 2>"],
     "messages_time_to_live": 3600
 }
 ######################################
